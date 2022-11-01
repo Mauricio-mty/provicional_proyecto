@@ -28,7 +28,8 @@ struct match{
 }
 
 void AgrgarEquipo();
-void AgregarMiembros();
+//void AgregarMiembros();
+members AgregarMiembros();
 void EliminarEquipo();
 void EliminarMiembro();
 void BuscarEquipo():
@@ -38,13 +39,57 @@ void Ramdom();
 
 int main(){
 
+team first;
+first.next=NULL;
+first.previous=NULL;
+
+
+
 }
 
 //Agregar Equipo(Mauricio)
-void AgregarEquipo(){};
+void AgregarEquipo(team *pTeam,string &name,string *pais,int &point,int &members_team){
+    team *newTeam = new team();
+    team *tempTeam = pTeam;
+   
+
+    newTeam->name=name;
+    newTeam->pais=pais;
+    newTeam->point=point;
+    newTeam->next=NULL;
+    newTeam->previous=NULL;
+    newTeam->members_team=AgregarMiembros(members_team);
+
+    if(tempTeam==NULL){
+        tempTeam=newTeam;
+    }else{
+       while (tempTeam!=NULL)
+       {
+         tempTeam=tempTeam->next;
+       }
+       tempTeam->next=newTeam;
+       newTeam->previous=tempTeam;
+       newTeam= 
+
+       
+    }
+    
+}
 
 //Agregar Miembro(Mauricio)
-void AgregarMiembros(){};
+//void AgregarMiembros(){};
+//Agregar Moembro(Mauricio)
+members AgregarMiembros(int *&members_team){
+    members* newMembers = new members[members_team];
+  
+   for(int i=0;i<members_team;i++){
+       fflush(stdin);
+       cout<<"Integrante N° "<<i+1<<endl;
+       cout<<"Nombre:";cin>>newMembers[i].name;
+       cout<<"Posicion:";cin>>newMembers[i].position;        
+   }
+    return &newMembers;
+}
 
 //Eliminar Equipo(Fernando)
 void EliminarEquipo(){};
